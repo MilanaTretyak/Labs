@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали товара</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background-color: #FAEBD7;
+    }
+    .shirt {
+      border: 1px solid #ccc;
+      margin: 10px auto;
+      padding: 10px;
+      text-align: center;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+    .shirt img {
+      max-width: 100%;
+      height: auto;
+    }
+    .color-selector {
+      margin: 10px 0;
+    }
+    button {
+      margin: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border: 2px solid black;
+      border-radius: 8px;
+      background-color: transparent; /*прозрачный фон*/
+      color: black;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+
+<div id="shirt-details" class="shirt"></div>
+
+<script src="shirts.js"></script>
+<script>
+  function generateShirtDetails() {
+    const shirtDetailsContainer = document.getElementById('shirt-details');
+
+    //получ данные из localStorage (ключ-значение)
+    const shirtIndex = localStorage.getItem('shirtIndex'); //берем значение связ с ключом
+    const shirt = shirts[shirtIndex];
+
+    const img = document.createElement('img');
+    img.src = shirt.default.front || 'shirt_images/default.png';
+    img.alt = "Изображение недоступно";
+    shirtDetailsContainer.appendChild(img);
+
+    const shirtName = document.createElement('h3');
+    shirtName.textContent = shirt.name || "Без названия";
+    shirtDetailsContainer.appendChild(shirtName);
+
+    const shirtDescription = document.createElement('p');
+    shirtDescription.textContent = shirt.description || "Описание отсутствует.";
+    shirtDetailsContainer.appendChild(shirtDescription);
+
+    const shirtPrice = document.createElement('p');
+    shirtPrice.textContent = shirt.price || "Цена недоступна.";
+    shirtDetailsContainer.appendChild(shirtPrice);
+
+    //селектор цветов
+    const colorSelector = document.createElement('div');
+    colorSelector.className = 'color-selector';
+
+    Object.keys(shirt.colors).forEach(color => {
+      const colorButton = document.createElement('button');
+      colorButton.textContent = color;
+      colorButton.style.backgroundColor = color;
+      colorButton.onclick = () => {
+        updateShirtImage(shirt, color, img);
+      };
+      colorSelector.appendChild(colorButton);
+    });
+
+    shirtDetailsContainer.appendChild(colorSelector);
+
+    //кнопка front
+    const frontButton = document.createElement('button');
+    frontButton.textContent = "Front";
+    frontButton.onclick = () => {
+      img.src = shirt.colors[img.color]?.front || shirt.default.front;
+    };
+    shirtDetailsContainer.appendChild(frontButton);
+
+    //кнопка back
+    const backButton = document.createElement('button');
+    backButton.textContent = "Back";
+    backButton.onclick = () => {
+      img.src = shirt.colors[img.color]?.back || shirt.default.back;
+    };
+    shirtDetailsContainer.appendChild(backButton);
+
+    shirtDetailsContainer.appendChild(colorSelector);
+  }
+
+  function updateShirtImage(shirt, color, img) {
+    img.src = shirt.colors[color]?.front || shirt.default.front;
+    img.color = color; //сохр цвет для использ в кнопках front/back
+    img.onerror = function() {
+      this.src = 'shirt_images/default.png';
+    };
+  }
+
+  window.onload = generateShirtDetails;
+</script>
+
+</body>
+</html>
