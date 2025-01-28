@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Film1Font';
-    src: url('../fonts/EmilyAustin.ttf') format('truetype');
+    src: url('../fonts/Milanski.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -22,50 +22,54 @@
 
 #film1 {
     font-family: 'Film1Font', Arial, sans-serif;
+    color: white;
 }
 
 #film2 {
     font-family: 'Film2Font', Arial, sans-serif;
+    color: white;
 }
 
 #film3 {
     font-family: 'Film3Font', Arial, sans-serif;
+    color: white;
 }
 
 #film1 p {
     text-align: left;
+    color: white;
 }
 
 #film2 p {
     text-align: center;
     font-weight: 1000; /*жирный текст*/
+    color: white;
 }
 
 #film3 p {
     text-align: right;
+    color: white;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    background-color: lightskyblue;
 }
 
 .container {
     width: 100%;
     max-width: 1440px;
     margin: auto;
-    background: white;
+    background: lightskyblue;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: white;
 }
 
 nav {
@@ -78,13 +82,13 @@ nav {
 nav a {
     text-decoration: none;
     color: white;
-    background: #333;
+    background: deeppink;
     padding: 10px;
     border-radius: 5px;
 }
 
 nav a:hover {
-    background: #555;
+    background: hotpink;
 }
 
 .movie {
@@ -93,7 +97,7 @@ nav a:hover {
 }
 
 .movie h2 {
-    color: #444;
+    color: white;
 }
 
 .movie-img-container {
@@ -109,7 +113,6 @@ nav a:hover {
     border-radius: 50px;
 }
 
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -117,7 +120,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #0a005e;
+    border: 1px solid deeppink;
 }
 
 th, td {
@@ -126,5 +129,5 @@ th, td {
 }
 
 th {
-    background-color: #be2020;
+    background-color: hotpink;
 }
