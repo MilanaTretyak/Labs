@@ -1,8 +1,6 @@
 ## 📌 Полное имя  
 **Третьяк Милана Владимировна**
 
-![1_xTV_l3RAEocW6zzp7OWspg](https://github.com/user-attachments/assets/b865ed49-82ba-41cd-8be0-333a83aa549f)
-
 ---
 
 ## 📬 Контактная информация  
@@ -62,12 +60,13 @@ FROM orders
 GROUP BY product_name
 ORDER BY orders_count DESC;
 ```
-
+![1_xTV_l3RAEocW6zzp7OWspg](https://github.com/user-attachments/assets/b865ed49-82ba-41cd-8be0-333a83aa549f)
 ---
 
 ## 🌍 Языки
 
 **Английский**: Intermediate (занятия с репетитором)
+
 **Русский**: Родной
 
 ---
